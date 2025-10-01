@@ -109,6 +109,13 @@ body{
     display: none;
 }
 
+.error{
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    visibility: hidden;
+}
+
 
 
 

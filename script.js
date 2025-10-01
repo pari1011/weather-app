@@ -6,6 +6,7 @@ const humidity=document.querySelector(".humidity")
 const searchButton=document.querySelector(".search button")
 const image=document.querySelector(".weather-icon")
 const weather=document.querySelector(".weather")
+const msg=document.querySelector(".error p")
 
 
 searchButton.addEventListener("click",async()=>{
@@ -15,8 +16,14 @@ searchButton.addEventListener("click",async()=>{
     response = await fetch(baseURL)
     console.log(response)
     data= await response.json()
-    console.log(data)
-    
+   
+    if(response.status!="200"){
+        msg.style.visibility="visible"
+        weather.style.display="none"
+
+    }
+    else{
+    msg.style.visibility="hidden"
     weather.style.display="block"
     temp.innerText=data["main"]["temp"] + "°C"
     cityName.innerText=data["name"]
@@ -27,7 +34,7 @@ searchButton.addEventListener("click",async()=>{
     console.log(weatherType)
     newSrc=`${weatherType}.png`
     image.src=newSrc
-
+    }
     
     
 
